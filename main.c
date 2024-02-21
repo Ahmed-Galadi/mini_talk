@@ -25,16 +25,26 @@ void	signal_handler(int signal)
 	}
 }
 
+void send_bits(unsigned char character)
+{
+	unsigned char	output;
+	int				i;
+
+	output = 0;
+	i = 8;
+	while (i--)
+	{
+		output = (character >> i) & 1;
+		if (output)
+			write(1, "1", 1);
+		else
+			write(1, "0", 1);
+	}
+}
+
 int main()
 {
-	signal_handler(0);
-	signal_handler(1);
-	signal_handler(0);
-	signal_handler(0);
-	signal_handler(1);
-	signal_handler(0);
-	signal_handler(0);
-	signal_handler(0);
+	send_bits('H');
 	
 	return (0);
 }

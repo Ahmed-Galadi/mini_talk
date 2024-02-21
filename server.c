@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 21:51:38 by agaladi           #+#    #+#             */
-/*   Updated: 2024/02/21 03:13:16 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/02/21 03:29:07 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	signal_handler(int signal)
 	static unsigned char	output_char;
 	static int				count;
 
-	if (signal == SIGUSR1)
+	if (signal == SIGUSR2)
 	{
 		
 		output_char = output_char << 1;
 		count++;
 	}
-	if (signal == SIGUSR2)
+	if (signal == SIGUSR1)
 	{
 		output_char = output_char << 1;
 		output_char = output_char | 1;
