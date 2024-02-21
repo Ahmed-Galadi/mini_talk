@@ -35,16 +35,21 @@ void send_bits(unsigned char character)
 	while (i--)
 	{
 		output = (character >> i) & 1;
-		if (output)
-			write(1, "1", 1);
-		else
+		if (!output)
 			write(1, "0", 1);
+		else
+			write(1, "1", 1);
 	}
+	i = 0;
+	write(1, " ", 1);
 }
 
 int main()
 {
 	send_bits('H');
-	
+	send_bits('E');
+	send_bits('L');
+	send_bits('L');
+	send_bits('O');
 	return (0);
 }

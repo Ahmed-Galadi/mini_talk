@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 21:53:56 by agaladi           #+#    #+#             */
-/*   Updated: 2024/02/21 03:24:01 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/02/21 04:25:10 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	send_bits(unsigned char character, pid_t pid)
 	unsigned char bit_holder;
 	int		i;
 
+	bit_holder = 0;
 	i = 8;
-	while (i)
+	while (i--)
 	{
-		bit_holder = 0;
 		bit_holder = (character >> i) & 1;
 		if (!bit_holder)
 		{
@@ -30,8 +30,7 @@ void	send_bits(unsigned char character, pid_t pid)
 		{
 			kill(pid, SIGUSR2);
 		}
-		usleep(10000);
-		i--;
+		usleep(1000);
 	}
 }
 
