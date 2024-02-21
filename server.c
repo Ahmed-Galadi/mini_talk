@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 21:51:38 by agaladi           #+#    #+#             */
-/*   Updated: 2024/02/21 04:24:58 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/02/21 22:25:21 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ int main(void)
 	pid = ft_itoa(getpid());
 	signal(SIGUSR1, signal_handler);
 	signal(SIGUSR2, signal_handler);
-	ft_putstr("MINITALK\n");
-	ft_putstr("server PID:\t");
+	ft_putstr(TITLE_MSG);
+	ft_putstr("server PID: ");
+	ft_putstr(DEVIDER);
 	ft_putstr(pid);
 	ft_putstr("\n");
 
