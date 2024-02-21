@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:55:11 by agaladi           #+#    #+#             */
-/*   Updated: 2024/02/20 06:15:18 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/02/21 06:27:41 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ int	ft_atoi(const char *nptr)
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		output = output * 10 + (nptr[i] - '0');
-		if (output > 9223372036854775807UL && sign == 1)
-			return (-1);
-		if (output > 9223372036854775807UL && sign == -1)
-			return (0);
 		i++;
 	}
 	return (output * sign);
