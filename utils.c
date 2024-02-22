@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 20:55:11 by agaladi           #+#    #+#             */
-/*   Updated: 2024/02/21 06:27:41 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/02/22 03:35:06 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr(char *str)
 {
-	while(*str)
+	while (*str)
 		write(1, str++, 1);
 }
 
@@ -30,7 +30,7 @@ static int	ft_isspace(char character)
 
 int	ft_atoi(const char *nptr)
 {
-	unsigned long output;
+	unsigned long	output;
 	int				sign;
 	int				i;
 
@@ -53,9 +53,9 @@ int	ft_atoi(const char *nptr)
 	return (output * sign);
 }
 
-static int nbr_len(int nbr)
+static int	nbr_len(int nbr)
 {
-	int count;
+	int		count;
 
 	count = 0;
 	if (nbr == 0)
@@ -63,18 +63,18 @@ static int nbr_len(int nbr)
 	if (nbr < 0)
 		count++;
 	while (nbr)
-	{	
+	{
 		count++;
 		nbr /= 10;
 	}
 	return (count);
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	char *nbr_str;
-	int len_nbr;
-	long nbr;
+	char	*nbr_str;
+	int		len_nbr;
+	long	nbr;
 
 	nbr = n;
 	len_nbr = nbr_len(nbr);

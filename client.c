@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 21:53:56 by agaladi           #+#    #+#             */
-/*   Updated: 2024/02/21 04:25:10 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/02/22 03:31:52 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	send_bits(unsigned char character, pid_t pid)
 {
-	unsigned char bit_holder;
-	int		i;
+	unsigned char	bit_holder;
+	int				i;
 
 	bit_holder = 0;
 	i = 8;
@@ -37,8 +37,8 @@ void	send_bits(unsigned char character, pid_t pid)
 int	main(int argc, char *argv[])
 {
 	pid_t	server_pid;
-    char	*message;
-    int		i;
+	char	*message;
+	int		i;
 
 	if (3 != argc)
 		ft_putstr("Usage: ./client <server_pid> <message>\n");
