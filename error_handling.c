@@ -6,13 +6,13 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 03:29:39 by agaladi           #+#    #+#             */
-/*   Updated: 2024/03/21 04:37:33 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/03/21 20:34:00 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static int		ft_isdigit(char *str)
+static int	ft_isdigit(char *str)
 {
 	int		i;
 
@@ -25,6 +25,7 @@ static int		ft_isdigit(char *str)
 	}
 	return (1);
 }
+
 static size_t	ft_strlen(char *str)
 {
 	int		count;
@@ -35,7 +36,7 @@ static size_t	ft_strlen(char *str)
 	return (count);
 }
 
-int		is_valid(char *pid, char *message)
+int	is_valid(char *pid, char *message)
 {
 	if (!pid || !message)
 		return (0);
@@ -44,7 +45,7 @@ int		is_valid(char *pid, char *message)
 	return (1);
 }
 
-void	print_err()
+void	print_err(void)
 {
 	ft_putstr(INV_INP_MSG);
 	exit(EXIT_FAILURE);
