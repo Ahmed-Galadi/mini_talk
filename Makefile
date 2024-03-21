@@ -6,12 +6,12 @@
 #    By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 04:49:55 by agaladi           #+#    #+#              #
-#    Updated: 2024/02/22 04:54:22 by agaladi          ###   ########.fr        #
+#    Updated: 2024/03/21 04:14:41 by agaladi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-SRCS = utils.c
+SRCS = utils.c error_handling.c
 
 CFLAGS = -Wall -Wextra -Werror -c
 DEPS = minitalk.h

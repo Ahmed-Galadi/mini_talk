@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 21:53:56 by agaladi           #+#    #+#             */
-/*   Updated: 2024/03/21 02:31:14 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/03/21 05:29:09 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	signal_handler(int signal)
 {
 	if (signal == SIGUSR1)
 	{
-		ft_putstr("message recieved successfully :)");
-		exit(0);
+		ft_putstr(SUCC_MSG);
+		exit(EXIT_SUCCESS);
 	}
 }
 
@@ -46,8 +46,8 @@ int	main(int argc, char *argv[])
 	int		i;
 
 	signal(SIGUSR1, signal_handler);
-	if (3 != argc)
-		ft_putstr("Usage: ./client <server_pid> <message>\n");
+	if (3 != argc || !is_valid(argv[1], argv[2]))
+		print_err();
 	else
 	{
 		server_pid = (pid_t)ft_atoi(argv[1]);
@@ -59,10 +59,7 @@ int	main(int argc, char *argv[])
 			i++;
 		}
 		while (i--)
-		{
 			send_bits(0, server_pid);
-			exit(0);
-		}
 	}
 	return (0);
 }
