@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 21:51:38 by agaladi           #+#    #+#             */
-/*   Updated: 2024/02/22 03:32:49 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/03/21 03:03:27 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,36 +25,62 @@ void	print_message(char *pid)
 	ft_putstr("\e[1;32m֎ \e[1;37mmessage\e[0;33m ⤳  \033[1;0m");
 }
 
-void	signal_handler(int signal)
+void	set_bit(int bit, unsigned char *output_char, int *count)
+{
+	if (bit == 0)
+	{
+		*output_char = *output_char << 1;
+		*count += 1;
+	}
+	if (bit == 1)
+	{
+		*output_char = *output_char << 1;
+		*output_char = *output_char | 1;
+		*count += 1;
+	}
+}
+
+void	signal_handler(int signal, siginfo_t *info, void *context)
 {
 	static unsigned char	output_char;
 	static int				count;
+	static int				client_pid;
 
+	if (client_pid != 0)
+	{
+		if (client_pid != info->si_pid)
+		{	
+			output_char = 0;
+			count = 0;
+		}
+	}
+	client_pid = info->si_pid;
 	if (signal == SIGUSR1)
-	{
-		output_char = output_char << 1;
-		count++;
-	}
+		set_bit(0, &output_char, &count);
 	if (signal == SIGUSR2)
-	{
-		output_char = output_char << 1;
-		output_char = output_char | 1;
-		count++;
-	}
+		set_bit(1, &output_char, &count);
 	if (8 == count)
 	{
-		write(1, &output_char, 1);
 		count = 0;
+		if (output_char == 0)
+			kill(client_pid ,SIGUSR1);
+		else
+			write(1, &output_char, 1);
 	}
 }
 
 int	main(void)
 {
-	char	*pid;
+	char				*pid;
+	struct sigaction	sa;
+	
+	sa.sa_sigaction = signal_handler;
+	sa.sa_flags = SA_SIGINFO;
 
 	pid = ft_itoa(getpid());
-	signal(SIGUSR1, signal_handler);
-	signal(SIGUSR2, signal_handler);
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
+
 	print_message(pid);
 	while (1)
 		sleep(1);

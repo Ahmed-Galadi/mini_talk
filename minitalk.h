@@ -6,16 +6,17 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 05:05:24 by agaladi           #+#    #+#             */
-/*   Updated: 2024/02/22 05:07:44 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/03/21 01:59:57 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 # define MINITALK_H
 
-# include <signal.h>
-# include <unistd.h>
+# include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
+# include <signal.h>
 
 # define TITLE_MSG "\
 \033[1;36m███╗░░░███╗██╗███╗░░██╗██╗████████╗░█████╗░██╗░░░░░██╗░░██╗\n\
