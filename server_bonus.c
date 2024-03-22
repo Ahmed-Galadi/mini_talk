@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 21:51:38 by agaladi           #+#    #+#             */
-/*   Updated: 2024/03/22 02:43:24 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/03/21 21:51:49 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 void	print_message(char *pid)
 {
@@ -63,7 +63,10 @@ void	signal_handler(int signal, siginfo_t *info, void *context)
 	if (8 == count)
 	{
 		count = 0;
-		write(1, &output_char, 1);
+		if (output_char == 0)
+			kill(client_pid, SIGUSR1);
+		else
+			write(1, &output_char, 1);
 	}
 }
 

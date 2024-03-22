@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 21:53:56 by agaladi           #+#    #+#             */
-/*   Updated: 2024/03/22 02:41:50 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/03/21 21:51:09 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 void	send_bits(unsigned char character, pid_t pid)
 {
@@ -30,12 +30,26 @@ void	send_bits(unsigned char character, pid_t pid)
 	}
 }
 
+void	signal_handler(int signal)
+{
+	if (signal == SIGUSR1)
+	{
+		ft_putstr(SUCC_MSG);
+		exit(EXIT_SUCCESS);
+	}
+}
+void f()
+{
+	system("leaks client");
+}
+
 int	main(int argc, char *argv[])
 {
 	pid_t	server_pid;
 	char	*message;
 	int		i;
 
+	signal(SIGUSR1, signal_handler);
 	if (3 != argc || !is_valid(argv[1], argv[2]))
 		print_err();
 	else
@@ -51,6 +65,6 @@ int	main(int argc, char *argv[])
 		while (i--)
 			send_bits(0, server_pid);
 	}
-	exit(EXIT_SUCCESS);
+	atexit(f);
 	return (0);
 }
