@@ -6,7 +6,7 @@
 #    By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 04:49:55 by agaladi           #+#    #+#              #
-#    Updated: 2024/03/22 02:49:02 by agaladi          ###   ########.fr        #
+#    Updated: 2024/03/22 02:57:15 by agaladi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,4 +61,3 @@ $(EXE1) : $(NAME) $(SRVR)
 
 $(EXE2) : $(NAME) $(CLNT)
 	$(CC) ${CFLAGS} $(CLNT) $(NAME) -o $(EXE2)
-

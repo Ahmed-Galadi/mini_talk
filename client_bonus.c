@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 21:53:56 by agaladi           #+#    #+#             */
-/*   Updated: 2024/03/21 21:51:09 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/03/22 02:55:22 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,6 @@ void	signal_handler(int signal)
 		exit(EXIT_SUCCESS);
 	}
 }
-void f()
-{
-	system("leaks client");
-}
 
 int	main(int argc, char *argv[])
 {
@@ -65,6 +61,5 @@ int	main(int argc, char *argv[])
 		while (i--)
 			send_bits(0, server_pid);
 	}
-	atexit(f);
 	return (0);
 }
